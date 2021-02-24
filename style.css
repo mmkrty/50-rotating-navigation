@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  background-color: #333;
+  color: #222;
+}
+
+.container {
+  background-color: #fafafa;
+  /* important transfrom origin on original element */
+  transform-origin: top left;
+  transition: transform 0.5s linear;
+  padding: 3.5rem;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.content {
+  max-width: 1000px;
+  margin: 50px auto;
+}
+
+.content h1 {
+  margin: 0;
+}
+
+.content small {
+  color: #555;
+  font-style: italic;
+}
+
+.content p {
+  line-height: 1.5;
+}
+
+.content img {
+  max-width: 100%;
+}
+
+.circle-container {
+  position: fixed; /* position on parent container */
+  top: -100px;
+  left: -100px;
+}
+
+.circle {
+  background-color: #ff7979;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.circle button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.circle button:focus {
+  outline: none;
+}
+
+.circle button#open {
+  left: 60%;
+}
+
+.circle button#close {
+  top: 60%;
+  transform: rotate(90deg);
+  transform-origin: top left;
+}
+
+nav {
+  position: fixed;
+  bottom: 40px;
+  left: 0px;
+  z-index: 100; /**/
+}
+
+nav ul {
+  list-style: none;
+  padding-left: 1.2rem;
+}
+
+nav ul li {
+  color: #fff;
+  text-transform: uppercase;
+  margin: 2.5rem 0;
+  /*important*/
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in;
+}
+
+nav ul li i {
+  font-size: 1.5rem;
+  margin-right: 0.8rem;
+}
+
+nav ul li + li {
+  margin-left: 1rem;
+  /*important*/
+  transform: translateX(-150%);
+}
+
+nav ul li + li + li {
+  margin-left: 2rem;
+  /*important*/
+  transform: translateX(-200%);
+}
+
+/* after rotation */
+.container.open {
+  transform: rotate(-20deg);
+}
+
+.container.open + nav li {
+  transform: translateX(0);
+  transition-delay: 0.3s;
+}
+
+.container.open .circle {
+  transform: rotate(-70deg);
+}
